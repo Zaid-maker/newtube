@@ -1,15 +1,16 @@
 import React from 'react'
+import { HomeLayout } from '../modules/home/ui/layouts/home-layout'
 
 interface HomeLayoutProps {
     children: React.ReactNode
 }
 
-const HomeLayout = ({ children }: HomeLayoutProps) => {
+const Layout = ({ children }: HomeLayoutProps) => {
     return (
-        <div>
+        <HomeLayout>
             {children}
-        </div>
+        </HomeLayout>
     )
 }
 
-export default HomeLayout
+export default Layout
