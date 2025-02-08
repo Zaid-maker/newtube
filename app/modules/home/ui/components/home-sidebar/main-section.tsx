@@ -36,9 +36,9 @@ export const MainSection = () => {
                                 isActive={false}
                                 onClick={() => { }}
                             >
-                                <Link href={item.url}>
+                                <Link href={item.url} className='flex items-center gap-4'>
                                     <item.icon />
-                                    <span>{item.title}</span>
+                                    <span className='text-sm'>{item.title}</span>
                                 </Link>
                             </SidebarMenuButton>
                         </SidebarMenuItem>
