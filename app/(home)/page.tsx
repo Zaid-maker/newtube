@@ -1,10 +1,11 @@
+import { trpc } from "@/trpc/client";
 
 const Home = () => {
-  return (
-    <div className='pl-3'>
-      I will load videos in future
-    </div>
-  )
-}
+  const { data } = trpc.hello.useQuery({
+    text: "Zaid",
+  });
 
-export default Home
+  return <div className="pl-3">I will load videos in future</div>;
+};
+
+export default Home;
