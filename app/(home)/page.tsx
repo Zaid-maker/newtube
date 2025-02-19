@@ -1,3 +1,5 @@
+'use client';
+
 import { trpc } from "@/trpc/client";
 
 const Home = () => {
@@ -5,7 +7,7 @@ const Home = () => {
     text: "Zaid",
   });
 
-  return <div className="pl-3">I will load videos in future</div>;
+  return <div className="pl-3">Client components says: {data?.greeting}</div>;
 };
 
 export default Home;
