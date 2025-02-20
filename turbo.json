@@ -3,9 +3,27 @@
   "ui": "tui",
   "tasks": {
     "build": {
+      "env": [
+        "LOGTAIL_URL",
+        "LOGTAIL_SOURCE_TOKEN",
+        "CLERK_SECRET_KEY",
+        "CLERK_SIGNING_SECRET",
+        "DATABASE_URL",
+        "UPSTASH_REDIS_REST_URL",
+        "UPSTASH_REDIS_REST_TOKEN"
+      ],
       "outputs": [".next/**", "dist/**"]
     },
     "dev": {
+      "env": [
+        "LOGTAIL_URL",
+        "LOGTAIL_SOURCE_TOKEN",
+        "CLERK_SECRET_KEY",
+        "CLERK_SIGNING_SECRET",
+        "DATABASE_URL",
+        "UPSTASH_REDIS_REST_URL",
+        "UPSTASH_REDIS_REST_TOKEN"
+      ],
       "cache": false,
       "persistent": true
     },
