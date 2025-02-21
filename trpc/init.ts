@@ -55,8 +55,7 @@ export const protectedProcedure = t.procedure.use(async function isAuthed(
 
   if (!success) {
     throw new TRPCError({
-      code: "TOO_MANY_REQUESTS",
-      message: "Rate limit exceeded",
+      code: "TOO_MANY_REQUESTS"
     });
   }
 
