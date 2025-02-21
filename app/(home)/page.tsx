@@ -5,9 +5,14 @@ import { ErrorBoundary } from "react-error-boundary";
 export const runtime = "nodejs";
 
 export default async function Home() {
-  void trpc.hello.prefetch({
-    text: "Antonio",
-  });
+  try {
+    await trpc.hello.prefetch({
+      text: "Antonio",
+    });
+  } catch (error) {
+    console.error("Error during prefetch:", error);
+    // You might choose to handle the error (e.g., return a fallback UI or rethrow)
+  }
 
   return (
     <HydrateClient>
