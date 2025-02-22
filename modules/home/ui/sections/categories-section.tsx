@@ -27,5 +27,5 @@ const CategoriesSectionSuspense = ({ categoryId }: CategoriesSectionProps) => {
     label: category.name,
   }));
 
-  return <FilterCarousel value={categoryId} data={data} />;
+  return <FilterCarousel isLoading value={categoryId} data={data} />;
 };
