@@ -72,16 +72,17 @@ export const FilterCarousel = ({
               All
             </Badge>
           </CarouselItem>
-          {data.map((item) => (
-            <CarouselItem key={item.value} className="pl-3 basis-auto">
-              <Badge
-                variant={value === null ? "default" : "secondary"}
-                className="rounded-lg px-3 py-1 cursor-pointer whitespace-nowrap text-sm"
-              >
-                {item.label}
-              </Badge>
-            </CarouselItem>
-          ))}
+          {!isLoading &&
+            data.map((item) => (
+              <CarouselItem key={item.value} className="pl-3 basis-auto">
+                <Badge
+                  variant={value === null ? "default" : "secondary"}
+                  className="rounded-lg px-3 py-1 cursor-pointer whitespace-nowrap text-sm"
+                >
+                  {item.label}
+                </Badge>
+              </CarouselItem>
+            ))}
         </CarouselContent>
         <CarouselPrevious className="left-0 z-20" />
         <CarouselNext className="right-0 z-20" />
