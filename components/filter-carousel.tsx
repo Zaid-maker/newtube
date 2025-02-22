@@ -56,7 +56,7 @@ export const FilterCarousel = ({
       />
 
       <Carousel
-      setApi={setApi}
+        setApi={setApi}
         opts={{
           align: "start",
           dragFree: true,
@@ -66,23 +66,22 @@ export const FilterCarousel = ({
         <CarouselContent className="-ml-3">
           <CarouselItem className="pl-3 basis-auto">
             <Badge
-              variant={value === null ? "default" : "secondary"}
+              variant={!value ? "default" : "secondary"}
               className="rounded-lg px-3 py-1 cursor-pointer whitespace-nowrap text-sm"
             >
               All
             </Badge>
           </CarouselItem>
-          {!isLoading &&
-            data.map((item) => (
-              <CarouselItem key={item.value} className="pl-3 basis-auto">
-                <Badge
-                  variant={value === null ? "default" : "secondary"}
-                  className="rounded-lg px-3 py-1 cursor-pointer whitespace-nowrap text-sm"
-                >
-                  {item.label}
-                </Badge>
-              </CarouselItem>
-            ))}
+          {data.map((item) => (
+            <CarouselItem key={item.value} className="pl-3 basis-auto">
+              <Badge
+                variant={value === null ? "default" : "secondary"}
+                className="rounded-lg px-3 py-1 cursor-pointer whitespace-nowrap text-sm"
+              >
+                {item.label}
+              </Badge>
+            </CarouselItem>
+          ))}
         </CarouselContent>
         <CarouselPrevious className="left-0 z-20" />
         <CarouselNext className="right-0 z-20" />
