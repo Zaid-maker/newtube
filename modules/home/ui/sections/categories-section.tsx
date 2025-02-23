@@ -4,6 +4,7 @@ import { trpc } from "@/trpc/client";
 import { ErrorBoundary } from "react-error-boundary";
 import React, { Suspense } from "react";
 import { FilterCarousel } from "@/components/filter-carousel";
+import { useRouter } from "next/navigation";
 
 interface CategoriesSectionProps {
   categoryId?: string;
@@ -24,6 +25,7 @@ const CategoriesSkeleton = () => {
 };
 
 const CategoriesSectionSuspense = ({ categoryId }: CategoriesSectionProps) => {
+  const router = useRouter();
   const [categories] = trpc.categories.getMany.useSuspenseQuery();
 
   const data = categories.map((category) => ({
@@ -31,11 +33,22 @@ const CategoriesSectionSuspense = ({ categoryId }: CategoriesSectionProps) => {
     label: category.name,
   }));
 
-  return (
-    <FilterCarousel
-      onSelect={(x) => console.log(x)}
-      value={categoryId}
-      data={data}
-    />
-  );
+  /**
+   * Handler for when a category is selected. If the value is null, then the query param
+   * is deleted, otherwise it is set to the value.
+   * @param value The value of the selected category, or null if none were selected.
+   */
+  const onSelect = (value: string | null) => {
+    const url = new URL(window.location.href);
+
+    if (value) {
+      url.searchParams.set("categoryId", value);
+    } else {
+      url.searchParams.delete("categoryId");
+    }
+
+    router.push(url.toString());
+  };
+
+  return <FilterCarousel onSelect={onSelect} value={categoryId} data={data} />;
 };
