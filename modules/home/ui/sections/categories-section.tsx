@@ -11,12 +11,16 @@ interface CategoriesSectionProps {
 
 export const CategoriesSection = ({ categoryId }: CategoriesSectionProps) => {
   return (
-    <Suspense fallback={<p>Loading...</p>}>
+    <Suspense fallback={<CategoriesSkeleton />}>
       <ErrorBoundary fallback={<p>Failed to load categories</p>}>
         <CategoriesSectionSuspense categoryId={categoryId} />
       </ErrorBoundary>
     </Suspense>
   );
+};
+
+const CategoriesSkeleton = () => {
+  return <FilterCarousel isLoading data={[]} onSelect={() => {}} />;
 };
 
 const CategoriesSectionSuspense = ({ categoryId }: CategoriesSectionProps) => {
