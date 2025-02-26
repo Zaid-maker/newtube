@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/sidebar";
 import { MainSection } from "./main-section";
 import Link from "next/link";
-import { LogOutIcon } from "lucide-react";
+import { LogOutIcon, VideoIcon } from "lucide-react";
 
 export const StudioSidebar = () => {
   return (
@@ -19,6 +19,14 @@ export const StudioSidebar = () => {
         <Separator />
         <SidebarGroup>
           <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton tooltip={"Exit Studio"} asChild>
+                <Link href="/studio">
+                  <VideoIcon className="size-5" />
+                  <span className="text-sm">Content</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton tooltip={"Exit Studio"} asChild>
                 <Link href="/">
