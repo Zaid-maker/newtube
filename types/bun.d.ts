@@ -1,3 +1,3 @@
 declare module "bun:test" {
-  export { expect, test } from "bun";
+  export { expect, test, describe, beforeAll, beforeEach, afterAll, afterEach } from "bun";
 }
