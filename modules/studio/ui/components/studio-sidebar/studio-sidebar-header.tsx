@@ -12,7 +12,7 @@ export const StudioSidebarHeader = () => {
     return (
       <SidebarHeader className="flex items-center justify-center pb-4">
         <Skeleton className="size-[112px] rounded-full" />
-        <div className="flex flex-col items-center mt-2">
+        <div className="flex flex-col items-center mt-2 gap-y-1">
           <Skeleton className="h-4 w-[80px]" />
           <Skeleton className="h-4 w-[100px]" />
         </div>
@@ -28,7 +28,7 @@ export const StudioSidebarHeader = () => {
           className="size-[112px] hover:opacity-80 transition-opacity"
         />
       </Link>
-      <div className="flex flex-col items-center mt-2">
+      <div className="flex flex-col items-center mt-2 gap-y-1">
         <p className="text-sm font-semibold">Your Profile</p>
         <p className="text-xs text-muted-foreground">{user.fullName}</p>
       </div>
