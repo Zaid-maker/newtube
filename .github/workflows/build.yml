@@ -20,9 +20,9 @@ jobs:
       NEXT_PUBLIC_CLERK_SIGN_UP_URL: "/sign-up"
       NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL: "/"
       NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL: "/"
-      DATABASE_URL: "dummy"
-      UPSTASH_REDIS_REST_URL: "dummy"
-      UPSTASH_REDIS_REST_TOKEN: "dummy"
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+      UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
 
     steps:
       - uses: actions/checkout@v4
