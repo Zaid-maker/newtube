@@ -13,12 +13,12 @@ updates:
       - "github-actions"
       - "automated"
     assignees:
-      - "devmirza"
+      - "Zaid-maker"
     commit-message:
       prefix: "ci"
       include: "scope"
     pull-request-branch-name:
       separator: "-"
     reviewers:
-      - "devmirza"
+      - "Zaid-maker"
     target-branch: "main"
