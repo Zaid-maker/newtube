@@ -1,0 +1,4 @@
+[test]
+preload = ["__tests__/setup.ts"]
+env = { NODE_ENV = "test" }
+coverage = true
