@@ -3,10 +3,14 @@ import { cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { TestWrapper } from "./test-utils";
 
-// Extend jest matchers
-import type { TestingLibraryMatchers } from "@testing-library/jest-dom/matchers";
 declare module "bun:test" {
-  interface Matchers<R> extends TestingLibraryMatchers<typeof expect, R> {}
+  export interface Expect {
+    toBeInTheDocument(): void;
+    toHaveTextContent(text: string | RegExp): void;
+    toBeVisible(): void;
+    toContainHTML(html: string): void;
+    toHaveClass(className: string): void;
+  }
 }
 
 // Cleanup after each test
