@@ -43,6 +43,21 @@ export const studioRouter = createTRPCRouter({
         // Add 1 to the limit to check of thre is more data
         .limit(limit + 1);
 
-      return data;
+      const hasMore = data.length > limit;
+      // Remove the last item if thre is more data
+      const items = hasMore ? data.slice(0, -1) : data;
+      // Set the next cursor to the last item if there is more data
+      const lastTime = items[items.length - 1];
+      const nextCursor = hasMore
+        ? {
+            id: lastTime.id,
+            updatedAt: lastTime.updatedAt,
+          }
+        : null;
+
+      return {
+        items,
+        nextCursor,
+      };
     }),
 });
