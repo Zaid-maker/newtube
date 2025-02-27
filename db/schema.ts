@@ -45,6 +45,7 @@ export const videos = pgTable("videos", {
       onDelete: "cascade",
     })
     .notNull(),
+  categoryId: uuid("category_id").references(() => categories.id),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
