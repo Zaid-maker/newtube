@@ -14,5 +14,7 @@ export const VideoSection = () => {
     }
   );
 
-  return <div>VideoSection</div>;
+  return <div>
+    {JSON.stringify(data)}
+  </div>;
 };
