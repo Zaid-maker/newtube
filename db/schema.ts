@@ -36,6 +36,10 @@ export const categories = pgTable(
   (t) => [uniqueIndex("name_idx").on(t.name)]
 );
 
+export const categoryRelations = relations(users, ({ many }) => ({
+  videos: many(videos),
+}));
+
 export const videos = pgTable("videos", {
   id: uuid("id").primaryKey().defaultRandom(),
   title: text("title").notNull(),
