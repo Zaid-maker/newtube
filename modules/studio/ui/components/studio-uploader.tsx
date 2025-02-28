@@ -12,7 +12,7 @@ export const StudioUploader = ({
 }: StudioUploaderProps) => {
   return (
     <div>
-      <MuxUploader />
+      <MuxUploader endpoint={endpoint} />
     </div>
   );
 };
