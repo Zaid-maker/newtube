@@ -2,46 +2,58 @@ import { expect, test, afterEach } from "bun:test";
 import { cleanup } from "@testing-library/react";
 import { TestWrapper } from "./test-utils";
 import "./matchers";
-import { Inter } from "./mocks/next-font";
 
-// Define custom require interface with specific types
-interface ModuleCache {
-  [key: string]: {
-    exports: unknown;
-    loaded: boolean;
+// Define specific types for mocks
+interface FontModule {
+  Inter(): {
+    className: string;
+    style: { fontFamily: string };
   };
 }
 
-interface RequireExtensions {
-  [key: string]: (module: unknown, filename: string) => void;
+interface JestGlobal {
+  requireActual: (module: string) => FontModule;
 }
 
-interface CustomRequire {
-  (id: string): unknown;
-  cache: ModuleCache;
-  extensions: RequireExtensions;
-  resolve: (id: string) => string;
-  prototype: (module: string) => unknown;
+// Extend global types without using var
+declare global {
+  interface Global {
+    jest: JestGlobal;
+  }
 }
 
-// Mock next/font using Bun's mock
-globalThis.process = {
-  ...globalThis.process,
-  env: { NODE_ENV: "test" },
+// Set test environment
+Object.defineProperty(process.env, "NODE_ENV", { value: "test" });
+
+// Create mock object with proper type
+const mockJest: JestGlobal = {
+  requireActual: () => ({
+    Inter: () => ({
+      className: "mock-font",
+      style: { fontFamily: "Inter" },
+    }),
+  }),
 };
 
-// Add properly typed mock for require
-const mockRequire = globalThis.require as CustomRequire;
-mockRequire.cache = {};
-mockRequire.extensions = {};
-mockRequire.resolve = (modulePath: string) => modulePath;
+// Assign mock to global scope
+Object.defineProperty(global, 'jest', {
+  value: mockJest,
+  writable: true,
+  configurable: true,
+});
 
-// Override require for next/font/google
-mockRequire.prototype = (module: string): unknown => {
-  if (module === "next/font/google") {
-    return { Inter };
+// Mock Dynamic Imports
+global.fetch = async (
+  input: RequestInfo | URL,
+  init?: RequestInit
+): Promise<Response> => {
+  if (input.toString().includes("next/font")) {
+    return new Response(JSON.stringify({ default: {} }), {
+      status: 200,
+      headers: { "content-type": "application/json" },
+    });
   }
-  return mockRequire(module);
+  return fetch(input, init);
 };
 
 // Cleanup after each test

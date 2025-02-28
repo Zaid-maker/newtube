@@ -1,4 +1,4 @@
 [test]
-preload = ["./test/mocks/next-font.ts", "./test/matchers.ts", "./test/setup.ts"]
+preload = ["./test/setup.ts", "./test/matchers.ts"]
 env = { NODE_ENV = "test" }
 coverage = true
