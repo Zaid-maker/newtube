@@ -4,6 +4,7 @@ import { trpc } from "@/trpc/client";
 import { DEFAULT_LIMIT } from "@/constants";
 import React, { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
+import { InfiniteScroll } from "@/components/infinite-scroll";
 
 export const VideoSection = () => {
   return (
@@ -16,7 +17,7 @@ export const VideoSection = () => {
 };
 
 const VideoSectionSuspense = () => {
-  const [data] = trpc.studio.getMany.useSuspenseInfiniteQuery(
+  const [data, query] = trpc.studio.getMany.useSuspenseInfiniteQuery(
     {
       limit: DEFAULT_LIMIT,
     },
@@ -25,5 +26,15 @@ const VideoSectionSuspense = () => {
     }
   );
 
-  return <div>{JSON.stringify(data)}</div>;
+  return (
+    <div>
+      {JSON.stringify(data)}
+      <InfiniteScroll
+      isManual
+        hasNextPage={query.hasNextPage}
+        isFetchingNextPage={query.isFetchingNextPage}
+        fetchNextPage={query.fetchNextPage}
+      />
+    </div>
+  );
 };
