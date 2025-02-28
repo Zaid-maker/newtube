@@ -8,9 +8,7 @@
     "dev:all": "concurrently \"bun run dev:webhook\" \"bun run dev\" ",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "test": "bun test",
-    "test:watch": "bun test --watch"
+    "lint": "next lint"
   },
   "packageManager": "bun@1.2.4",
   "dependencies": {
@@ -93,10 +91,6 @@
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "tsx": "^4.19.2",
-    "typescript": "^5",
-    "@testing-library/jest-dom": "^6.4.2",
-    "@testing-library/react": "^14.2.1",
-    "@testing-library/user-event": "^14.5.2",
-    "happy-dom": "^13.6.2"
+    "typescript": "^5"
   }
 }
