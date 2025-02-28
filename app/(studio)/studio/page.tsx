@@ -4,9 +4,9 @@ import { HydrateClient, trpc } from "@/trpc/server";
 import React from "react";
 
 const Page = () => {
-  void trpc.studio.getMany.prefetchInfinite({
-    limit: DEFAULT_LIMIT,
-  });
+  // void trpc.studio.getMany.prefetchInfinite({
+  //   limit: DEFAULT_LIMIT,
+  // });
 
   return (
     <HydrateClient>
