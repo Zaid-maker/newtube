@@ -82,6 +82,8 @@ export const POST = async (request: Request) => {
           thumbnailUrl,
         })
         .where(eq(videos.muxUploadId, data.upload_id));
+
+      break;
     }
   }
 
