@@ -16,6 +16,7 @@ import {
 import Link from "next/link";
 import { VideoThumbnail } from "@/modules/videos/ui/components/video-thumbnail";
 import { snakeCaseToTitle } from "@/lib/utils";
+import { format } from "date-fns";
 
 export const VideoSection = () => {
   return (
@@ -88,7 +89,9 @@ const VideoSectionSuspense = () => {
                         {snakeCaseToTitle(video.muxStatus || "error")}
                       </div>
                     </TableCell>
-                    <TableCell>date</TableCell>
+                    <TableCell>
+                      {format(new Date(video.createdAt), "d MMM yyyy")}
+                    </TableCell>
                     <TableCell>views</TableCell>
                     <TableCell>comments</TableCell>
                     <TableCell>likes</TableCell>
