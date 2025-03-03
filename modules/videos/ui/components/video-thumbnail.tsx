@@ -1,3 +1,4 @@
+import { formatDuration } from "@/lib/utils";
 import Image from "next/image";
 
 interface VideoThumbnailProps {
@@ -32,7 +33,7 @@ export const VideoThumbnail = ({
       </div>
 
       <div className="absolute bottom-2 right-2 px-1 py-0.5 rounded bg-black/80 text-white text-xs font-medium">
-        {duration}
+        {formatDuration(duration)}
       </div>
     </div>
   );
