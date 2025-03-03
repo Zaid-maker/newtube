@@ -4,10 +4,12 @@ interface VideoThumbnailProps {
   title: string;
   imageUrl?: string | null;
   previewUrl?: string | null;
+  duration: number;
 }
 
 export const VideoThumbnail = ({
   title,
+  duration,
   imageUrl,
   previewUrl,
 }: VideoThumbnailProps) => {
@@ -27,6 +29,10 @@ export const VideoThumbnail = ({
           fill
           className="h-full w-full object-cover opacity-0 group-hover:opacity-100"
         />
+      </div>
+
+      <div className="absolute bottom-2 right-2 px-1 py-0.5 rounded bg-black/80 text-white text-xs font-medium">
+        {duration}
       </div>
     </div>
   );
