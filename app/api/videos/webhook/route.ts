@@ -121,6 +121,31 @@ export const POST = async (request: Request) => {
 
       break;
     }
+
+    case "video.asset.track.ready": {
+      const data = payload.data as VideoAssetTrackReadyWebhookEvent["data"] & {
+        asset_id: string;
+      };
+
+      // Typescript is ass LMFAO
+      const assetId = data.asset_id;
+      const trackId = data.id;
+      const status = data.status;
+
+      if (!assetId) {
+        return new Response("No asset ID found", { status: 400 });
+      }
+
+      await db
+        .update(videos)
+        .set({
+          muxTrackStatus: status,
+          muxTrackId: trackId,
+        })
+        .where(eq(videos.muxAssetId, assetId));
+
+      break;
+    }
   }
 
   return new Response("Webhook received", { status: 200 });
