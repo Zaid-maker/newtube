@@ -23,6 +23,10 @@ updates:
     reviewers:
       - "Zaid-maker"
     target-branch: "main"
+    versioning-strategy: auto
+    draft:
+      conditions:
+        - "bump: major"
 
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -46,3 +50,7 @@ updates:
     reviewers:
       - "Zaid-maker"
     target-branch: "main"
+    versioning-strategy: auto
+    draft:
+      conditions:
+        - "bump: major"
