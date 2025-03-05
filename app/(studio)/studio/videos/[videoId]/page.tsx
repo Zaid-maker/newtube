@@ -1,5 +1,5 @@
-import { trpc } from "@/trpc/server";
-import React from "react";
+import { VideoView } from "@/modules/studio/ui/views/video-view";
+import { HydrateClient, trpc } from "@/trpc/server";
 
 export const dynamic = "force-dynamic";
 
@@ -16,7 +16,11 @@ const Page = async ({ params }: PageProps) => {
     id: videoId,
   });
 
-  return <div>Page</div>;
+  return (
+    <HydrateClient>
+      <VideoView videoId={videoId} />
+    </HydrateClient>
+  );
 };
 
 export default Page;
