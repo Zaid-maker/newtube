@@ -52,7 +52,29 @@ const VideoSectionSkeleton = () => {
                 <TableCell className="pl-6">
                   <div className="flex items-center gap-4">
                     <Skeleton className="h-20 w-36" />
+                    <div className="flex flex-col gap-2">
+                      <Skeleton className="h-4 w-[100px]" />
+                      <Skeleton className="h-4 w-[150px]" />
+                    </div>
                   </div>
+                </TableCell>
+                <TableCell>
+                  <Skeleton className="h-4 w-20" />
+                </TableCell>
+                <TableCell>
+                  <Skeleton className="h-4 w-16" />
+                </TableCell>
+                <TableCell>
+                  <Skeleton className="h-4 w-24" />
+                </TableCell>
+                <TableCell className="text-right">
+                  <Skeleton className="h-4 w-12 ml-auto" />
+                </TableCell>
+                <TableCell className="text-right">
+                  <Skeleton className="h-4 w-12 ml-auto" />
+                </TableCell>
+                <TableCell className="text-right pr-6">
+                  <Skeleton className="h-4 w-12 ml-auto" />
                 </TableCell>
               </TableRow>
             ))}
