@@ -32,9 +32,11 @@ export const VideoSection = () => {
 
 const VideoSectionSkeleton = () => {
   return (
-    <Skeleton></Skeleton>
-  )
-}
+    <>
+      <div className="border-y"></div>
+    </>
+  );
+};
 
 const VideoSectionSuspense = () => {
   const [videos, query] = trpc.studio.getMany.useSuspenseInfiniteQuery(
