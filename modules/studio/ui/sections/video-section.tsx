@@ -18,6 +18,7 @@ import { VideoThumbnail } from "@/modules/videos/ui/components/video-thumbnail";
 import { snakeCaseToTitle } from "@/lib/utils";
 import { format } from "date-fns";
 import { Globe2Icon, LockIcon } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export const VideoSection = () => {
   return (
@@ -28,6 +29,12 @@ export const VideoSection = () => {
     </Suspense>
   );
 };
+
+const VideoSectionSkeleton = () => {
+  return (
+    <Skeleton></Skeleton>
+  )
+}
 
 const VideoSectionSuspense = () => {
   const [videos, query] = trpc.studio.getMany.useSuspenseInfiniteQuery(

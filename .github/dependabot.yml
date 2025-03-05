@@ -1,5 +1,29 @@
 version: 2
+enable-beta-ecosystems: true
 updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "npm"
+      - "automated"
+    assignees:
+      - "Zaid-maker"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    pull-request-branch-name:
+      separator: "-"
+    reviewers:
+      - "Zaid-maker"
+    target-branch: "main"
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
