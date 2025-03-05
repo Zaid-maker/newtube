@@ -1,9 +1,22 @@
-import React from 'react'
+import { trpc } from "@/trpc/server";
+import React from "react";
 
-const Page = () => {
-  return (
-    <div>Page</div>
-  )
+export const dynamic = "force-dynamic";
+
+interface PageProps {
+  params: Promise<{
+    videoId: string;
+  }>;
 }
 
-export default Page
+const Page = async ({ params }: PageProps) => {
+  const { videoId } = await params;
+
+  void trpc.studio.getOne({
+    id: videoId,
+  });
+
+  return <div>Page</div>;
+};
+
+export default Page;
