@@ -12,7 +12,7 @@ interface PageProps {
 const Page = async ({ params }: PageProps) => {
   const { videoId } = await params;
 
-  void trpc.studio.getOne({
+  void trpc.studio.getOne.prefetch({
     id: videoId,
   });
 
