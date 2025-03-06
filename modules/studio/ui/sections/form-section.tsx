@@ -24,6 +24,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 interface FormSectionProps {
   videoId: string;
@@ -98,6 +99,24 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
                   <FormLabel>Title</FormLabel>
                   <FormControl>
                     <Input {...field} placeholder="Add a title to your video" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="description"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Description</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      {...field}
+                      value={field.value || ""}
+                      rows={10}
+                      placeholder="Add a title to your video"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
