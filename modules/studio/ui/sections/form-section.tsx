@@ -1,9 +1,18 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { trpc } from "@/trpc/client";
-import React, { Suspense } from "react";
+import { MoreVertical, TrashIcon } from "lucide-react";
+import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 
 interface FormSectionProps {
   videoId: string;
@@ -30,6 +39,10 @@ const FormSectionSkeleton = () => {
 const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
   const [video] = trpc.studio.getOne.useSuspenseQuery({ id: videoId });
 
+  const form = useForm({
+    defaultValues: video,
+  });
+
   return (
     <div className="flex items-center justify-between mb-6">
       <div>
@@ -42,6 +55,19 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
         <Button type="submit" disabled={false}>
           Save
         </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="icon">
+              <MoreVertical />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem>
+              <TrashIcon className="size-4 mr-2" />
+              Delete
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </div>
   );
