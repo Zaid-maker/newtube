@@ -9,6 +9,10 @@ module.exports = {
         allow: "/",
       },
       {
+        userAgent: "Googlebot",
+        allow: "/",
+      },
+      {
         userAgent: "*",
         disallow: ["/private/"],
       },
