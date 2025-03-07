@@ -25,7 +25,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+} from "@/components/ui/select";
 import { SelectValue } from "@radix-ui/react-select";
 
 interface FormSectionProps {
@@ -52,6 +57,7 @@ const FormSectionSkeleton = () => {
 
 const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
   const [video] = trpc.studio.getOne.useSuspenseQuery({ id: videoId });
+  const [categories] = trpc.categories.getMany.useSuspenseQuery();
 
   const form = useForm<z.infer<typeof videoUpdateSchema>>({
     resolver: zodResolver(videoUpdateSchema),
@@ -141,9 +147,7 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="someting">
-                        Something
-                      </SelectItem>
+                      <SelectItem value="someting">Something</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
