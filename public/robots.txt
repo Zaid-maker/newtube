@@ -1,0 +1,7 @@
+# Allow Internet Archive's crawler full access
+User-agent: ia_archiver
+Allow: /
+
+# For all other bots, restrict access to sensitive directories
+User-agent: *
+Disallow: /private/
