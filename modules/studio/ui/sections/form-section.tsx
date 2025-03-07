@@ -25,7 +25,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectTrigger } from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select";
 import { SelectValue } from "@radix-ui/react-select";
 
 interface FormSectionProps {
@@ -140,6 +140,11 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
                         <SelectValue placeholder="Select a category" />
                       </SelectTrigger>
                     </FormControl>
+                    <SelectContent>
+                      <SelectItem value="someting">
+                        Something
+                      </SelectItem>
+                    </SelectContent>
                   </Select>
                   <FormMessage />
                 </FormItem>
