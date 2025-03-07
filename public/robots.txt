@@ -1,7 +1,13 @@
-# Allow Internet Archive's crawler full access
+# ia_archiver
 User-agent: ia_archiver
 Allow: /
 
-# For all other bots, restrict access to sensitive directories
+# *
 User-agent: *
 Disallow: /private/
+
+# Host
+Host: https://newtube-cyan.vercel.app/
+
+# Sitemaps
+Sitemap: https://newtube-cyan.vercel.app/sitemap.xml
