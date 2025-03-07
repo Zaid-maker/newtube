@@ -2,6 +2,10 @@
 User-agent: ia_archiver
 Allow: /
 
+# Googlebot
+User-agent: Googlebot
+Allow: /
+
 # *
 User-agent: *
 Disallow: /private/
