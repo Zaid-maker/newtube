@@ -35,6 +35,7 @@ import { SelectValue } from "@radix-ui/react-select";
 import { toast } from "sonner";
 import { VideoPlayer } from "@/modules/videos/ui/components/video-player";
 import Link from "next/link";
+import { snakeCaseToTitle } from "@/lib/utils";
 
 interface FormSectionProps {
   videoId: string;
@@ -204,7 +205,7 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
                     <div className="flex items-center gap-x-2">
                       <Link href={`/videos/${video.id}`}>
                         <p className="line-clamp-1 text-sm text-blue-500">
-                          http://localhost:3000/videos/{video.id}
+                          {fillUrl}
                         </p>
                       </Link>
                       <Button
@@ -218,6 +219,27 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
                         {isCopied ? <CopyCheckIcon /> : <CopyIcon />}
                       </Button>
                     </div>
+                  </div>
+                </div>
+                <div className="flex justify-between items-center">
+                  <div className="flex flex-col gap-y-1">
+                    <p className="text-muted-foreground text-xs">
+                      Video status
+                    </p>
+                    <p className="text-sm">
+                      {snakeCaseToTitle(video.muxStatus || "preparing")}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex justify-between items-center">
+                  <div className="flex flex-col gap-y-1">
+                    <p className="text-muted-foreground text-xs">
+                      Subtitle status
+                    </p>
+                    <p className="text-sm">
+                      {snakeCaseToTitle(video.muxTrackStatus || "no_subtitles")}
+                    </p>
                   </div>
                 </div>
               </div>
