@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { trpc } from "@/trpc/client";
-import { CopyIcon, MoreVertical, TrashIcon } from "lucide-react";
+import { CopyCheckIcon, CopyIcon, MoreVertical, TrashIcon } from "lucide-react";
 import { Suspense, useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -215,7 +215,7 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
                         onClick={onCopy}
                         disabled={isCopied}
                       >
-                        <CopyIcon />
+                        {isCopied ? <CopyCheckIcon /> : <CopyIcon />}
                       </Button>
                     </div>
                   </div>
