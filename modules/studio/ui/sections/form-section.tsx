@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { trpc } from "@/trpc/client";
 import { CopyIcon, MoreVertical, TrashIcon } from "lucide-react";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -60,6 +60,7 @@ const FormSectionSkeleton = () => {
 
 const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
   const utils = trpc.useUtils();
+  const [isCopied, setIsCopied] = useState(false);
   const [video] = trpc.studio.getOne.useSuspenseQuery({ id: videoId });
   const [categories] = trpc.categories.getMany.useSuspenseQuery();
 
@@ -82,6 +83,19 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
   const onSubmit = async (data: z.infer<typeof videoUpdateSchema>) => {
     update.mutate(data);
     console.log(data);
+  };
+
+  const fillUrl = `${
+    process.env.VERCEL_URL || "http://localhost:3000"
+  }/videos/${videoId}`;
+
+  const onCopy = async () => {
+    await navigator.clipboard.writeText(fillUrl);
+    setIsCopied(true);
+
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 2000);
   };
 
   return (
@@ -198,8 +212,8 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
                         variant="ghost"
                         size="icon"
                         className="shrink-0"
-                        onClick={() => {}}
-                        disabled={false}
+                        onClick={onCopy}
+                        disabled={isCopied}
                       >
                         <CopyIcon />
                       </Button>
