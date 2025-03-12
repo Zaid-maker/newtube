@@ -33,6 +33,7 @@ import {
   CopyCheckIcon,
   CopyIcon,
   Globe2Icon,
+  ImagePlusIcon,
   LockIcon,
   MoreVertical,
   MoreVerticalIcon,
@@ -206,11 +207,17 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
                           <Button
                             type="button"
                             size="icon"
-                            className="bg-black/50 hover:bg-black/50"
+                            className="bg-black/50 hover:bg-black/50 absolute top-1 right-1 rounded-full opacity-100 md:opacity-0 group-hover:opacity-100 duration-300 size-7"
                           >
                             <MoreVerticalIcon className="text-white" />
                           </Button>
                         </DropdownMenuTrigger>
+                        <DropdownMenuContent align="start">
+                          <DropdownMenuItem>
+                            <ImagePlusIcon />
+                            Change
+                          </DropdownMenuItem>
+                        </DropdownMenuContent>
                       </DropdownMenu>
                     </div>
                   </FormControl>
