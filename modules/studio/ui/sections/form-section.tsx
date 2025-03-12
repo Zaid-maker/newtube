@@ -7,21 +7,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { trpc } from "@/trpc/client";
-import {
-  CopyCheckIcon,
-  CopyIcon,
-  Globe2Icon,
-  LockIcon,
-  MoreVertical,
-  TrashIcon,
-} from "lucide-react";
-import { Suspense, useState } from "react";
-import { ErrorBoundary } from "react-error-boundary";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { videoUpdateSchema } from "@/db/schema";
 import {
   Form,
   FormControl,
@@ -31,20 +16,36 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
 } from "@/components/ui/select";
-import { SelectValue } from "@radix-ui/react-select";
-import { toast } from "sonner";
-import { VideoPlayer } from "@/modules/videos/ui/components/video-player";
-import Link from "next/link";
+import { Textarea } from "@/components/ui/textarea";
+import { videoUpdateSchema } from "@/db/schema";
 import { snakeCaseToTitle } from "@/lib/utils";
-import { useRouter } from "next/navigation";
+import { VideoPlayer } from "@/modules/videos/ui/components/video-player";
+import { trpc } from "@/trpc/client";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { SelectValue } from "@radix-ui/react-select";
+import {
+  CopyCheckIcon,
+  CopyIcon,
+  Globe2Icon,
+  LockIcon,
+  MoreVertical,
+  MoreVerticalIcon,
+  TrashIcon,
+} from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { Suspense, useState } from "react";
+import { ErrorBoundary } from "react-error-boundary";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
 import { THUMBNAIL_FALLBACK } from "../../../videos/constants";
 
 interface FormSectionProps {
@@ -200,6 +201,17 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
                         fill
                         className="object-cover"
                       />
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button
+                            type="button"
+                            size="icon"
+                            className="bg-black/50 hover:bg-black/50"
+                          >
+                            <MoreVerticalIcon className="text-white" />
+                          </Button>
+                        </DropdownMenuTrigger>
+                      </DropdownMenu>
                     </div>
                   </FormControl>
                 </FormItem>
