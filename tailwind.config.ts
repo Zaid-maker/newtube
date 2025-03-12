@@ -1,5 +1,6 @@
-import { withUt } from "uploadthing/tw";
 import type { Config } from "tailwindcss";
+import tailwindAnimate from "tailwindcss-animate";
+import { withUt } from "uploadthing/tw";
 
 export default withUt({
   darkMode: ["class"],
@@ -92,5 +93,5 @@ export default withUt({
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindAnimate],
 }) satisfies Config;
