@@ -38,8 +38,8 @@ import {
   MoreVertical,
   MoreVerticalIcon,
   RotateCcw,
-  SparkleIcon,
-  TrashIcon,
+  SparklesIcon,
+  TrashIcon
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -220,7 +220,7 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
                             Change
                           </DropdownMenuItem>
                           <DropdownMenuItem>
-                            <SparkleIcon className="size-4 mr-1" />
+                            <SparklesIcon className="size-4 mr-1" />
                             AI-generated
                           </DropdownMenuItem>
                           <DropdownMenuItem>
