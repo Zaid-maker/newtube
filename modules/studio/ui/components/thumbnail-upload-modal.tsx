@@ -1,4 +1,5 @@
 import { ResponsiveModal } from "@/components/responsive-modal";
+import { UploadDropzone } from "@/lib/uploadthing";
 
 interface ThumbnailUploadModalProps {
   videoId: string;
@@ -17,7 +18,7 @@ export const ThumbnailUploadModal = ({
       open={open}
       onOpenChange={onOpenChange}
     >
-      <p>Hello</p>
+      <UploadDropzone endpoint="imageUploader" />
     </ResponsiveModal>
   );
 };
