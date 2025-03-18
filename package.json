@@ -88,7 +88,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "concurrently": "^9.1.2",
-    "drizzle-kit": "0.30.3",
+    "drizzle-kit": "0.30.5",
     "eslint": "^9",
     "eslint-config-next": "15.2.2",
     "postcss": "^8",
