@@ -28,9 +28,6 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-      day: "monday"
-      time: "09:00"
-      timezone: "UTC"
     open-pull-requests-limit: 10
     labels:
       - "dependencies"
