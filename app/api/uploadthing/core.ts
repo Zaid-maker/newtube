@@ -21,11 +21,11 @@ export const ourFileRouter = {
       })
     )
     .middleware(async ({ input }) => {
-      const { userId } = await auth();
+      const { userId: clerkUserId } = await auth();
 
-      if (!userId) throw new UploadThingError("Unauthorized");
+      if (!clerkUserId) throw new UploadThingError("Unauthorized");
 
-      return { userId, ...input };
+      return { userId: clerkUserId, ...input };
     })
     .onUploadComplete(async ({ metadata, file }) => {
       await db
@@ -33,7 +33,10 @@ export const ourFileRouter = {
         .set({
           thumbnailUrl: file.url,
         })
-        .where(and(eq(videos.id, metadata.videoId)));
+        .where(and(
+          eq(videos.id, metadata.videoId),
+          eq(videos.userId, metadata.userId)
+        ));
 
       return { uploadedBy: metadata.userId };
     }),
