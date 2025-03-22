@@ -32,9 +32,6 @@ jobs:
         with:
           bun-version: latest
 
-      - name: Install Turbo globally
-        run: bun install -g turbo
-
       - name: Install dependencies
         run: bun install
 
