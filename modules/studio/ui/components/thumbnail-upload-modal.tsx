@@ -18,7 +18,7 @@ export const ThumbnailUploadModal = ({
       open={open}
       onOpenChange={onOpenChange}
     >
-      <UploadDropzone endpoint="imageUploader" />
+      <UploadDropzone endpoint="thumbnailUploader" input={{ videoId }} />
     </ResponsiveModal>
   );
 };
