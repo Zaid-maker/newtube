@@ -50,7 +50,18 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref_name }}
-          name: Release ${{ github.ref_name }}
+          name: "🚀 Release ${{ github.ref_name }} 🎉"
           draft: false
           prerelease: false
           generate_release_notes: true
+          body: |
+            ## 🎯 New Release ${{ github.ref_name }}
+            
+            ### 🔄 Automatic Release
+            This release was automatically generated from tag ${{ github.ref_name }}
+            
+            ### 📝 Release Notes
+            Auto-generated release notes will appear below.
+            
+            ### 🙏 Thank you
+            Thanks for using our application! For any issues or feedback, please create an issue.
