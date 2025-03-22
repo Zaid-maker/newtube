@@ -9,6 +9,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      NEXT_PUBLIC_APP_URL: "http://localhost:3000"
+      NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }}
+      CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
+      CLERK_SIGNING_SECRET: ${{ secrets.CLERK_SIGNING_SECRET }}
+      NEXT_PUBLIC_CLERK_SIGN_IN_URL: "/sign-in"
+      NEXT_PUBLIC_CLERK_SIGN_UP_URL: "/sign-up"
+      NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL: "/"
+      NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL: "/"
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+      UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+      MUX_TOKEN_ID: ${{ secrets.MUX_TOKEN_ID }}
+      MUX_TOKEN_SECRET: ${{ secrets.MUX_TOKEN_SECRET }}
+      MUX_SIGNING_SECRET: ${{ secrets.MUX_SIGNING_SECRET }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -18,11 +34,14 @@ jobs:
         with:
           bun-version: latest
 
+      - name: Install Turbo globally
+        run: bun install -g turbo
+
       - name: Install dependencies
         run: bun install
 
       - name: Build
-        run: bun run build # Adjust this if your build command is different
+        run: turbo build
 
       - name: Create Release
         id: create_release
