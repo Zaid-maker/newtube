@@ -1,5 +1,5 @@
 import { db } from "@/db";
-import { videos } from "@/db/schema";
+import { users, videos } from "@/db/schema";
 import { auth } from "@clerk/nextjs/server";
 import { and, eq } from "drizzle-orm";
 import { createUploadthing, type FileRouter } from "uploadthing/next";
@@ -25,7 +25,14 @@ export const ourFileRouter = {
 
       if (!clerkUserId) throw new UploadThingError("Unauthorized");
 
-      return { userId: clerkUserId, ...input };
+      const [user] = await db
+        .select()
+        .from(users)
+        .where(eq(users.clerkId, clerkUserId));
+
+      if (!user) throw new UploadThingError("Unauthorized");
+
+      return { user, ...input };
     })
     .onUploadComplete(async ({ metadata, file }) => {
       await db
@@ -33,12 +40,14 @@ export const ourFileRouter = {
         .set({
           thumbnailUrl: file.url,
         })
-        .where(and(
-          eq(videos.id, metadata.videoId),
-          eq(videos.userId, metadata.userId)
-        ));
+        .where(
+          and(
+            eq(videos.id, metadata.videoId),
+            eq(videos.userId, metadata.user.id)
+          )
+        );
 
-      return { uploadedBy: metadata.userId };
+      return { uploadedBy: metadata.user.id };
     }),
 } satisfies FileRouter;
 
