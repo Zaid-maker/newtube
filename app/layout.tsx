@@ -22,7 +22,7 @@ export default function RootLayout({
       <html lang="en">
         <body className="antialiased">
           <TRPCProvider>
-            <Toaster />
+            <Toaster richColors />
             {children}
           </TRPCProvider>
         </body>
