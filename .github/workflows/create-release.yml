@@ -59,13 +59,18 @@ jobs:
           prerelease: false
           generate_release_notes: true
           body: |
-            ## 🎯 New Release ${{ github.ref_name }}
+            ## 🎯 Release ${{ github.ref_name }}
+
+            ### 📦 What's Changed
+            <!-- Release notes will be automatically generated below this line -->
             
-            ### 🔄 Automatic Release
-            This release was automatically generated from tag ${{ github.ref_name }}
+            ### 🔄 Additional Information
+            - Release Date: ${{ github.event.head_commit.timestamp }}
+            - Author: ${{ github.actor }}
             
-            ### 📝 Release Notes
-            Auto-generated release notes will appear below.
+            ### 🔗 Links
+            - [Full Changelog](${{ github.server_url }}/${{ github.repository }}/compare/${{ github.event.before }}...${{ github.ref_name }})
+            - [Release Discussion](${{ github.server_url }}/${{ github.repository }}/discussions)
             
             ### 🙏 Thank you
-            Thanks for using our application! For any issues or feedback, please create an issue.
+            Thanks for using our application! If you find any issues, please report them on our [issues page](${{ github.server_url }}/${{ github.repository }}/issues).
