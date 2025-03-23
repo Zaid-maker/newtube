@@ -3,6 +3,15 @@ name: Build
 on:
   push:
     branches: ["main"]
+    paths-ignore:
+      - ".github/**"
+      - "**/*.md"
+      - ".gitignore"
+      - ".env.example"
+      - "LICENSE"
+      - ".prettierrc"
+      - ".eslintrc.*"
+      - ".editorconfig"
 
 jobs:
   build:
