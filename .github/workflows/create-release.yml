@@ -16,6 +16,44 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for commit logs
+
+      - name: Get changes
+        id: get_changes
+        run: |
+          PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+          
+          # Get commit changes
+          if [ -z "$PREV_TAG" ]; then
+            COMMITS=$(git log --pretty=format:"- %s (%h)" ${{ github.ref_name }})
+          else
+            COMMITS=$(git log --pretty=format:"- %s (%h)" $PREV_TAG..${{ github.ref_name }})
+          fi
+          
+          # Get PR changes
+          if [ -n "$PREV_TAG" ]; then
+            PRS=$(gh pr list --search "merged:>=$(git show -s --format=%ci $PREV_TAG) base:main" --json title,number,url --template \
+              '{{range .}}- {{.title}} (#{{.number}}){{"\n"}}{{end}}' || echo "")
+          else
+            PRS=""
+          fi
+          
+          echo "commits<<EOF" >> $GITHUB_OUTPUT
+          if [ -n "$COMMITS" ]; then
+            echo "$COMMITS" >> $GITHUB_OUTPUT
+          else
+            echo "No direct commits in this release" >> $GITHUB_OUTPUT
+          fi
+          echo "EOF" >> $GITHUB_OUTPUT
+          
+          echo "prs<<EOF" >> $GITHUB_OUTPUT
+          if [ -n "$PRS" ]; then
+            echo "$PRS" >> $GITHUB_OUTPUT
+          else
+            echo "No pull requests merged in this release" >> $GITHUB_OUTPUT
+          fi
+          echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Create Release
         id: create_release
@@ -27,12 +65,15 @@ jobs:
           name: "🚀 Release ${{ github.ref_name }} 🎉"
           draft: false
           prerelease: false
-          generate_release_notes: true
+          generate_release_notes: false
           body: |
             ## 🎯 Release ${{ github.ref_name }}
 
-            ### 📦 What's Changed
-            <!-- Release notes will be automatically generated below this line -->
+            ### 📦 Pull Request Changes
+            ${{ steps.get_changes.outputs.prs }}
+
+            ### 💻 Commit Changes
+            ${{ steps.get_changes.outputs.commits }}
             
             ### 🔄 Additional Information
             - Release Date: ${{ github.event.head_commit.timestamp }}
