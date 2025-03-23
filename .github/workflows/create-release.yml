@@ -106,6 +106,10 @@ jobs:
           fi
           echo "EOF" >> $GITHUB_OUTPUT
 
+      - name: Get current date
+        id: date
+        run: echo "date=$(date +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_OUTPUT
+
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v2
@@ -128,7 +132,7 @@ jobs:
             ${{ steps.get_changes.outputs.commits }}
             
             ### 🔄 Additional Information
-            - Release Date: ${{ github.event.head_commit.timestamp }}
+            - Release Date: ${{ steps.date.outputs.date }}
             - Author: ${{ github.actor }}
             
             ### 🔗 Links
