@@ -1,9 +1,20 @@
 name: Create Release
 
 on:
+  workflow_dispatch:
+    inputs:
+      version_strategy:
+        description: 'Version increment strategy'
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+        default: 'patch'
   push:
     tags:
-      - "v*" # Trigger on version tags
+      - "v*"
 
 permissions:
   contents: write
@@ -17,7 +28,37 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Fetch all history for commit logs
+          fetch-depth: 0
+
+      - name: Calculate version
+        if: github.event_name == 'workflow_dispatch'
+        id: version
+        run: |
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          CURRENT_VERSION=${LATEST_TAG#v}
+          IFS='.' read -r major minor patch <<< "$CURRENT_VERSION"
+          
+          case "${{ github.event.inputs.version_strategy }}" in
+            major)
+              NEW_VERSION="$((major + 1)).0.0"
+              ;;
+            minor)
+              NEW_VERSION="${major}.$((minor + 1)).0"
+              ;;
+            patch)
+              NEW_VERSION="${major}.${minor}.$((patch + 1))"
+              ;;
+          esac
+          
+          echo "new_version=v${NEW_VERSION}" >> $GITHUB_OUTPUT
+
+      - name: Create Tag
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          git config user.name Zaid-maker
+          git config user.email 53424436+Zaid-maker@users.noreply.github.com
+          git tag ${{ steps.version.outputs.new_version }}
+          git push origin ${{ steps.version.outputs.new_version }}
 
       - name: Get changes
         id: get_changes
@@ -61,14 +102,14 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
-          tag_name: ${{ github.ref_name }}
-          name: "🚀 Release ${{ github.ref_name }} 🎉"
+          tag_name: ${{ github.event_name == 'workflow_dispatch' && steps.version.outputs.new_version || github.ref_name }}
+          name: "🚀 Release ${{ github.event_name == 'workflow_dispatch' && steps.version.outputs.new_version || github.ref_name }} 🎉"
           draft: false
           prerelease: false
           generate_release_notes: false
-          fail_on_unmatched_files: true  # v2 feature: fails if files specified in files_glob don't exist
+          fail_on_unmatched_files: true
           body: |
-            ## 🎯 Release ${{ github.ref_name }}
+            ## 🎯 Release ${{ github.event_name == 'workflow_dispatch' && steps.version.outputs.new_version || github.ref_name }}
 
             ### 📦 Pull Request Changes
             ${{ steps.get_changes.outputs.prs }}
