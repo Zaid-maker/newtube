@@ -125,6 +125,8 @@ jobs:
           body: |
             ## 🎯 Release ${{ github.event_name == 'workflow_dispatch' && steps.version.outputs.new_version || github.ref_name }}
 
+            _This release was ${{ github.event_name == 'workflow_dispatch' && 'created automatically via GitHub Actions' || 'pushed locally by a developer' }}_
+
             ### 📦 Pull Request Changes
             ${{ steps.get_changes.outputs.prs }}
 
