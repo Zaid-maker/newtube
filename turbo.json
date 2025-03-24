@@ -1,11 +1,8 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env"],
-  "globalEnv": ["NODE_ENV", "CI", "TURBO_TOKEN", "TURBO_TEAM"],
   "ui": "tui",
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
       "env": [
         "NEXT_PUBLIC_APP_URL",
         "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY",
@@ -22,8 +19,7 @@
         "MUX_TOKEN_SECRET",
         "MUX_SIGNING_SECRET"
       ],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**"],
-      "cache": true
+      "outputs": [".next/**", "dist/**"]
     },
     "dev": {
       "env": [
