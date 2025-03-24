@@ -16,9 +16,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
-      cancel-in-progress: true
 
     env:
       NEXT_PUBLIC_APP_URL: "http://localhost:3000"
@@ -44,27 +41,11 @@ jobs:
         with:
           bun-version: latest
 
-      - name: Cache dependencies
-        uses: actions/cache@v4
-        with:
-          path: |
-            **/node_modules
-            ~/.bun/install/cache
-            .turbo
-          key: ${{ runner.os }}-${{ hashFiles('**/bun.lock') }}
-          lookup-only: true
-
       - name: Install Turbo globally
         run: bun install -g turbo
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
-
-      - name: Setup Vercel CLI
-        run: bun install -g vercel@latest
-
-      - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        run: bun install
 
       - name: Build
-        run: turbo build --cache-dir=".turbo" --api="https://api.vercel.com"
+        run: turbo build
