@@ -4,7 +4,7 @@
     "": {
       "name": "youtube-clone",
       "dependencies": {
-        "@clerk/nextjs": "6.12.8",
+        "@clerk/nextjs": "6.12.9",
         "@hookform/resolvers": "^3.10.0",
         "@mux/mux-node": "^10.0.0",
         "@mux/mux-player-react": "^3.3.0",
@@ -100,7 +100,7 @@
 
     "@clerk/clerk-react": ["@clerk/clerk-react@5.25.2", "", { "dependencies": { "@clerk/shared": "^3.2.0", "@clerk/types": "^4.49.1", "tslib": "2.8.1" }, "peerDependencies": { "react": "^18.0.0 || ^19.0.0 || ^19.0.0-0", "react-dom": "^18.0.0 || ^19.0.0 || ^19.0.0-0" } }, "sha512-QdqAwYz6iYcbMoinMOvtVlHcvwW6idzPbImFGtH8Aw5WjpFPYb7G2Fv3qMGRu8frE43Z9JyxwsHKgipafU1DSA=="],
 
-    "@clerk/nextjs": ["@clerk/nextjs@6.12.8", "", { "dependencies": { "@clerk/backend": "^1.25.5", "@clerk/clerk-react": "^5.25.2", "@clerk/shared": "^3.2.0", "@clerk/types": "^4.49.1", "server-only": "0.0.1", "tslib": "2.8.1" }, "peerDependencies": { "next": "^13.5.4 || ^14.0.3 || ^15.0.0", "react": "^18.0.0 || ^19.0.0 || ^19.0.0-0", "react-dom": "^18.0.0 || ^19.0.0 || ^19.0.0-0" } }, "sha512-X//B12BkkdHBMhfFvKsdX9gBDvIg6v9HzEVByR/a9z21NgF9TvX3sR18FhdD4DiFDC9mPff3UOPK8Q9WPppHLQ=="],
+    "@clerk/nextjs": ["@clerk/nextjs@6.12.9", "", { "dependencies": { "@clerk/backend": "^1.25.5", "@clerk/clerk-react": "^5.25.2", "@clerk/shared": "^3.2.0", "@clerk/types": "^4.49.1", "server-only": "0.0.1", "tslib": "2.8.1" }, "peerDependencies": { "next": "^13.5.7 || ^14.2.25 || ^15.2.3", "react": "^18.0.0 || ^19.0.0 || ^19.0.0-0", "react-dom": "^18.0.0 || ^19.0.0 || ^19.0.0-0" } }, "sha512-nVhvGC4ZkmlzO1jY4QCqH8vpNazLTXLgBrmI1KuqPWg6OcrGGh90Bwsq49sSntfpMb6fScqz09nVFZdrQ5U3XQ=="],
 
     "@clerk/shared": ["@clerk/shared@3.2.0", "", { "dependencies": { "@clerk/types": "^4.49.1", "dequal": "2.0.3", "glob-to-regexp": "0.4.1", "js-cookie": "3.0.5", "std-env": "^3.7.0", "swr": "^2.2.0" }, "peerDependencies": { "react": "^18.0.0 || ^19.0.0 || ^19.0.0-0", "react-dom": "^18.0.0 || ^19.0.0 || ^19.0.0-0" }, "optionalPeers": ["react", "react-dom"] }, "sha512-+b0A3FJuaTkvV6jTg78IZk9wIBUZ7+I08eQy1Ib/xj5w2y5eDekU5Qnu3EmMc0PW8btMeeoz6MI0MeGK35HVbQ=="],
 
