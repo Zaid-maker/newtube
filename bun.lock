@@ -4,7 +4,7 @@
     "": {
       "name": "youtube-clone",
       "dependencies": {
-        "@clerk/nextjs": "6.12.9",
+        "@clerk/nextjs": "6.12.10",
         "@hookform/resolvers": "^3.10.0",
         "@mux/mux-node": "^10.0.0",
         "@mux/mux-player-react": "^3.3.0",
@@ -96,15 +96,15 @@
 
     "@babel/runtime": ["@babel/runtime@7.26.7", "", { "dependencies": { "regenerator-runtime": "^0.14.0" } }, "sha512-AOPI3D+a8dXnja+iwsUqGRjr1BbZIe771sXdapOtYI531gSqpi92vXivKcq2asu/DFpdl1ceFAKZyRzK2PCVcQ=="],
 
-    "@clerk/backend": ["@clerk/backend@1.25.5", "", { "dependencies": { "@clerk/shared": "^3.2.0", "@clerk/types": "^4.49.1", "cookie": "1.0.2", "snakecase-keys": "8.0.1", "tslib": "2.8.1" } }, "sha512-nnBpr7oSq5iATWRExuljEfp7xa90KE1OUgaGCSmtZYF0T9TWHGkZHYqkQhD4XjiqlR2XsrsQ/UzPfmHM1Km7+Q=="],
+    "@clerk/backend": ["@clerk/backend@1.25.6", "", { "dependencies": { "@clerk/shared": "^3.2.1", "@clerk/types": "^4.49.2", "cookie": "1.0.2", "snakecase-keys": "8.0.1", "tslib": "2.8.1" } }, "sha512-JxHs9OXhx37RWK5rO3IITh+KP3EYQed9rLZiJKvQxr7A7plYAJhK8BzjNXAE5IXZbCZjkOGFyynmuXnjnyUqaw=="],
 
-    "@clerk/clerk-react": ["@clerk/clerk-react@5.25.2", "", { "dependencies": { "@clerk/shared": "^3.2.0", "@clerk/types": "^4.49.1", "tslib": "2.8.1" }, "peerDependencies": { "react": "^18.0.0 || ^19.0.0 || ^19.0.0-0", "react-dom": "^18.0.0 || ^19.0.0 || ^19.0.0-0" } }, "sha512-QdqAwYz6iYcbMoinMOvtVlHcvwW6idzPbImFGtH8Aw5WjpFPYb7G2Fv3qMGRu8frE43Z9JyxwsHKgipafU1DSA=="],
+    "@clerk/clerk-react": ["@clerk/clerk-react@5.25.3", "", { "dependencies": { "@clerk/shared": "^3.2.1", "@clerk/types": "^4.49.2", "tslib": "2.8.1" }, "peerDependencies": { "react": "^18.0.0 || ^19.0.0 || ^19.0.0-0", "react-dom": "^18.0.0 || ^19.0.0 || ^19.0.0-0" } }, "sha512-nSuUzvu/DtiBADx2q0p0syk6NfCT5q4SuVJbQUimNSOPSnGJ7CVfO6QvEXS1oWcVyEKn+8nVlMaZonfDsuaORA=="],
 
-    "@clerk/nextjs": ["@clerk/nextjs@6.12.9", "", { "dependencies": { "@clerk/backend": "^1.25.5", "@clerk/clerk-react": "^5.25.2", "@clerk/shared": "^3.2.0", "@clerk/types": "^4.49.1", "server-only": "0.0.1", "tslib": "2.8.1" }, "peerDependencies": { "next": "^13.5.7 || ^14.2.25 || ^15.2.3", "react": "^18.0.0 || ^19.0.0 || ^19.0.0-0", "react-dom": "^18.0.0 || ^19.0.0 || ^19.0.0-0" } }, "sha512-nVhvGC4ZkmlzO1jY4QCqH8vpNazLTXLgBrmI1KuqPWg6OcrGGh90Bwsq49sSntfpMb6fScqz09nVFZdrQ5U3XQ=="],
+    "@clerk/nextjs": ["@clerk/nextjs@6.12.10", "", { "dependencies": { "@clerk/backend": "^1.25.6", "@clerk/clerk-react": "^5.25.3", "@clerk/shared": "^3.2.1", "@clerk/types": "^4.49.2", "server-only": "0.0.1", "tslib": "2.8.1" }, "peerDependencies": { "next": "^13.5.7 || ^14.2.25 || ^15.2.3", "react": "^18.0.0 || ^19.0.0 || ^19.0.0-0", "react-dom": "^18.0.0 || ^19.0.0 || ^19.0.0-0" } }, "sha512-bvMYaxLlrdMQ+yaAFow1KHlFdsnPJmO3vNW+Nm7hXCl2RBsAZ3cD4bW1wQSD7nNUPXz7S6YgWptymGtPFy3mFg=="],
 
-    "@clerk/shared": ["@clerk/shared@3.2.0", "", { "dependencies": { "@clerk/types": "^4.49.1", "dequal": "2.0.3", "glob-to-regexp": "0.4.1", "js-cookie": "3.0.5", "std-env": "^3.7.0", "swr": "^2.2.0" }, "peerDependencies": { "react": "^18.0.0 || ^19.0.0 || ^19.0.0-0", "react-dom": "^18.0.0 || ^19.0.0 || ^19.0.0-0" }, "optionalPeers": ["react", "react-dom"] }, "sha512-+b0A3FJuaTkvV6jTg78IZk9wIBUZ7+I08eQy1Ib/xj5w2y5eDekU5Qnu3EmMc0PW8btMeeoz6MI0MeGK35HVbQ=="],
+    "@clerk/shared": ["@clerk/shared@3.2.1", "", { "dependencies": { "@clerk/types": "^4.49.2", "dequal": "2.0.3", "glob-to-regexp": "0.4.1", "js-cookie": "3.0.5", "std-env": "^3.7.0", "swr": "^2.2.0" }, "peerDependencies": { "react": "^18.0.0 || ^19.0.0 || ^19.0.0-0", "react-dom": "^18.0.0 || ^19.0.0 || ^19.0.0-0" }, "optionalPeers": ["react", "react-dom"] }, "sha512-KLLb/AohQH/p+XcRAwtijQRmnZA/dfCu+jkY6nDDS5J3PQDl/cUxuRVCCTeitOrCzwP7vLxowKz6cSqUq5Irlg=="],
 
-    "@clerk/types": ["@clerk/types@4.49.1", "", { "dependencies": { "csstype": "3.1.3" } }, "sha512-eVxDDvf4D36lFp5fWek6P+bTeZa4c4KAAlo3sE7Ga2lIsnhot9p+p+ugqeP/Y5EgOmj3+uy1nwvpcgZ4oV93PA=="],
+    "@clerk/types": ["@clerk/types@4.49.2", "", { "dependencies": { "csstype": "3.1.3" } }, "sha512-b4LR3Xsegqe0S6ZkaSJ1skO5a36EIiYRCFBzrJIbJX58vh25FFbOs4VHcK71uCLGJ1Jm1bViPi8QPGYoqYAUuw=="],
 
     "@corex/deepmerge": ["@corex/deepmerge@4.0.43", "", {}, "sha512-N8uEMrMPL0cu/bdboEWpQYb/0i2K5Qn8eCsxzOmxSggJbbQte7ljMRoXm917AbntqTGOzdTu+vP3KOOzoC70HQ=="],
 
