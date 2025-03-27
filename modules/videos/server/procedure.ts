@@ -7,6 +7,30 @@ import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 
 export const videosRouter = createTRPCRouter({
+  restoreThumbnail: protectedProcedure
+    .input(z.object({ id: z.string().uuid() }))
+    .mutation(async ({ ctx, input }) => {
+      const { id: userId } = ctx.user;
+
+      const [existingVideo] = await db
+        .select()
+        .from(videos)
+        .where(and(eq(videos.id, input.id), eq(videos.userId, userId)));
+
+      if (!existingVideo) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+        });
+      }
+
+      if (!existingVideo.muxPlaybackId) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+        });
+      }
+
+      const thumbnailUrl = `https://images.mux.com/${existingVideo.muxPlaybackId}/thumbnail.jpg`;
+    }),
   remove: protectedProcedure
     .input(z.object({ id: z.string().uuid() }))
     .mutation(async ({ ctx, input }) => {
