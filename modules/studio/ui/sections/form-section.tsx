@@ -106,6 +106,14 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
     },
   });
 
+  const restoreThumbnail = trpc.videos.restoreThumbnail.useMutation({
+    onSucces: () => {
+      utils.studio.getMany.invalidate();
+      utils.studio.getOne.invalidate({ id: videoId });
+      toast.success("Thumbnail restored");
+    }
+  })
+
   const form = useForm<z.infer<typeof videoUpdateSchema>>({
     resolver: zodResolver(videoUpdateSchema),
     defaultValues: video,

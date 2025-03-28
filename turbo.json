@@ -38,7 +38,7 @@
         "MUX_TOKEN_SECRET",
         "MUX_SIGNING_SECRET"
       ],
-      "cache": false,
+      "cache": true,
       "persistent": true
     },
     "lint": {}
