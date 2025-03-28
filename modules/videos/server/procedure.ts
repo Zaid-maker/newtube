@@ -30,6 +30,16 @@ export const videosRouter = createTRPCRouter({
       }
 
       const thumbnailUrl = `https://images.mux.com/${existingVideo.muxPlaybackId}/thumbnail.jpg`;
+
+      const [updatedVideo] = await db
+        .update(videos)
+        .set({
+          thumbnailUrl,
+        })
+        .where(and(eq(videos.id, input.id), eq(videos.userId, userId)))
+        .returning();
+
+      return updatedVideo;
     }),
   remove: protectedProcedure
     .input(z.object({ id: z.string().uuid() }))
