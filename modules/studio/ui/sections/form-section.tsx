@@ -107,12 +107,15 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
   });
 
   const restoreThumbnail = trpc.videos.restoreThumbnail.useMutation({
-    onSucces: () => {
+    onSuccess: () => {
       utils.studio.getMany.invalidate();
       utils.studio.getOne.invalidate({ id: videoId });
       toast.success("Thumbnail restored");
-    }
-  })
+    },
+    onError: () => {
+      toast.error("Something went wrong");
+    },
+  });
 
   const form = useForm<z.infer<typeof videoUpdateSchema>>({
     resolver: zodResolver(videoUpdateSchema),
@@ -236,7 +239,9 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
                             </Button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="start" side="right">
-                            <DropdownMenuItem onClick={() => setThumbnailModalOpen(true)}>
+                            <DropdownMenuItem
+                              onClick={() => setThumbnailModalOpen(true)}
+                            >
                               <ImagePlusIcon className="size-4 mr-1" />
                               Change
                             </DropdownMenuItem>
