@@ -249,7 +249,11 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
                               <SparklesIcon className="size-4 mr-1" />
                               AI-generated
                             </DropdownMenuItem>
-                            <DropdownMenuItem>
+                            <DropdownMenuItem
+                              onClick={() =>
+                                restoreThumbnail.mutate({ id: videoId })
+                              }
+                            >
                               <RotateCcw className="size-4 mr-1" />
                               Restore
                             </DropdownMenuItem>
