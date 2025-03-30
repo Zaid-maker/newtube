@@ -39,6 +39,7 @@ export const ourFileRouter = {
         .update(videos)
         .set({
           thumbnailUrl: file.url,
+          thumbnailKey: file.key,
         })
         .where(
           and(
