@@ -23,6 +23,11 @@ updates:
     reviewers:
       - "Zaid-maker"
     target-branch: "main"
+    groups:
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
 
   - package-ecosystem: "github-actions"
     directory: "/"
