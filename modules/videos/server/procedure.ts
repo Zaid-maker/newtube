@@ -29,7 +29,7 @@ export const videosRouter = createTRPCRouter({
         });
       }
 
-      const thumbnailUrl = `https://images.mux.com/${existingVideo.muxPlaybackId}/thumbnail.jpg`;
+      const thumbnailUrl = `https://image.mux.com/${existingVideo.muxPlaybackId}/thumbnail.jpg`;
 
       const [updatedVideo] = await db
         .update(videos)
