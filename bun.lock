@@ -7,7 +7,7 @@
         "@clerk/nextjs": "6.12.12",
         "@hookform/resolvers": "^3.10.0",
         "@mux/mux-node": "^10.0.0",
-        "@mux/mux-player-react": "^3.3.2",
+        "@mux/mux-player-react": "^3.3.3",
         "@mux/mux-uploader-react": "^1.1.2",
         "@neondatabase/serverless": "0.10.4",
         "@radix-ui/react-accordion": "^1.2.3",
@@ -259,17 +259,17 @@
 
     "@mux/mux-node": ["@mux/mux-node@10.0.0", "", { "dependencies": { "@types/node": "^18.11.18", "@types/node-fetch": "^2.6.4", "abort-controller": "^3.0.0", "agentkeepalive": "^4.2.1", "form-data-encoder": "1.7.2", "formdata-node": "^4.3.2", "jose": "^4.14.4", "node-fetch": "^2.6.7" } }, "sha512-7u0bwYQ+bEKzFGkpgF0B0YVCFUNPVuWxNW+qPrhyup2zGsThsda8W9trd2XemfFl3ftolmANp6HCIMh/HnApZQ=="],
 
-    "@mux/mux-player": ["@mux/mux-player@3.3.2", "", { "dependencies": { "@mux/mux-video": "0.24.5", "@mux/playback-core": "0.28.5", "media-chrome": "~4.9.0", "player.style": "^0.1.6" } }, "sha512-R+eeIhItEGeMAFfGrDFJbUQ3H14PqRPFVcjg8wm8WJUXScAJlNLyVxGwHPwpaGdDlSFYsIBZYyBsVx0mUoJ0MQ=="],
+    "@mux/mux-player": ["@mux/mux-player@3.3.3", "", { "dependencies": { "@mux/mux-video": "0.25.0", "@mux/playback-core": "0.28.6", "media-chrome": "~4.9.0", "player.style": "^0.1.7" } }, "sha512-BabJHSJKa+KTl9pXlnxg1tbTUj1xMnUOiALNHfgWwXR7tiU5nSDnjY4CkMCvevU9FhEEdBw8t6ImPN7g4FfM2Q=="],
 
-    "@mux/mux-player-react": ["@mux/mux-player-react@3.3.2", "", { "dependencies": { "@mux/mux-player": "3.3.2", "@mux/playback-core": "0.28.5", "prop-types": "^15.8.1" }, "peerDependencies": { "@types/react": "^17.0.0 || ^17.0.0-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0", "react": "^17.0.2 || ^17.0.0-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0", "react-dom": "^17.0.2 || ^17.0.2-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0" }, "optionalPeers": ["@types/react"] }, "sha512-sPztgGNshxtFg0Vt79W28TG0BGBgJzLQFoeTjPKtc+r8yghQxLSPfDJdgtbGDbUpDGmipEpETNX9FYGdVo2ucg=="],
+    "@mux/mux-player-react": ["@mux/mux-player-react@3.3.3", "", { "dependencies": { "@mux/mux-player": "3.3.3", "@mux/playback-core": "0.28.6", "prop-types": "^15.8.1" }, "peerDependencies": { "@types/react": "^17.0.0 || ^17.0.0-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0", "react": "^17.0.2 || ^17.0.0-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0", "react-dom": "^17.0.2 || ^17.0.2-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0" }, "optionalPeers": ["@types/react"] }, "sha512-NkYg2WgyjzV+Yz1tDjz9K1KgBq+cDdf9P5TCt13J+7SHZTY4MCDbkAofv+JFd2zKchGaHHYf23XtjSblgNpkxw=="],
 
     "@mux/mux-uploader": ["@mux/mux-uploader@1.1.2", "", { "dependencies": { "@mux/upchunk": "^3.4.0" } }, "sha512-WbByb/67TNCC2eNS/a4j9SUJOffvp2fy+fwoj32nWZQyYSujNDg5l10+Ez2O4qoR8BywpfQSo2traskCBfEnNA=="],
 
     "@mux/mux-uploader-react": ["@mux/mux-uploader-react@1.1.2", "", { "dependencies": { "@mux/mux-uploader": "1.1.2", "prop-types": "^15.7.2" }, "peerDependencies": { "@types/react": "^17.0.0 || ^17.0.0-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0", "react": "^17.0.2 || ^17.0.0-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0", "react-dom": "^17.0.2 || ^17.0.2-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0" }, "optionalPeers": ["@types/react"] }, "sha512-aAbWSiQ5/TraUOQ2ZruyJgpLhjJqgQgBy6yZTLjLXs887M1vvJsgP/oEd5bmer0hCQw+j4sj+SMZpiNd8PN1qQ=="],
 
-    "@mux/mux-video": ["@mux/mux-video@0.24.5", "", { "dependencies": { "@mux/playback-core": "0.28.5", "castable-video": "~1.1.5", "custom-media-element": "~1.4.2", "media-tracks": "~0.3.3" } }, "sha512-yY14oDVeELXtTvWh1R7KK0gWBjq6dDuPD2xTxcuxZL9nitXIT2Y4YhpMnP/g0oHEUcOK/bvpQQaYSjE7FIe+Tg=="],
+    "@mux/mux-video": ["@mux/mux-video@0.25.0", "", { "dependencies": { "@mux/playback-core": "0.28.6", "castable-video": "~1.1.5", "custom-media-element": "~1.4.2", "media-tracks": "~0.3.3" } }, "sha512-22S990FXEbipca9wZbs8BSMMd3wVSxl/CP8jWS6QhY3L6yUi/dCW41DaCx7WCTbudO0IK566XuCROA1mIDi79g=="],
 
-    "@mux/playback-core": ["@mux/playback-core@0.28.5", "", { "dependencies": { "hls.js": "~1.5.19", "mux-embed": "^5.8.3" } }, "sha512-URiE0H3wdJA1v2tJ9x1mGT4t6d53M1bSz8DZFy12bDvwQjDTtzuUlWK7+O1zPKEP21+Fl74kkJIc2XHo2NCWeA=="],
+    "@mux/playback-core": ["@mux/playback-core@0.28.6", "", { "dependencies": { "hls.js": "~1.5.19", "mux-embed": "^5.8.3" } }, "sha512-XB9FCfqA93MB20DQ2zOVS7NxEcQb8nAGoReEwCLvndjBkd3xDbUHsn2R9aPyGLUpJHm/Zqz3kNSaF8gOMpTIXQ=="],
 
     "@mux/upchunk": ["@mux/upchunk@3.5.0", "", { "dependencies": { "event-target-shim": "^6.0.2", "xhr": "^2.6.0" } }, "sha512-D+TtvlujlZQjh5I+vFzJ31h5E1uVpEaLdR8M3BNaCFbVLnFMZs8J/L/fYSUyVGnyHT/yDtPHn/IHKdo3G6oSjA=="],
 
