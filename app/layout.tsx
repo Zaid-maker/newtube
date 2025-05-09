@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { TRPCProvider } from "@/trpc/client";
 import { Toaster } from "@/components/ui/sonner";
+import Script from 'next/script';
 
 // Remove inter initialization
 export const metadata: Metadata = {
@@ -25,6 +26,13 @@ export default function RootLayout({
             <Toaster richColors />
             {children}
           </TRPCProvider>
+          {/* Rybbit script: loads once, after hydration */}
+          <Script
+            src="https://app.rybbit.io/api/script.js"
+            data-site-id="279"
+            strategy="afterInteractive"
+            defer
+          />
         </body>
       </html>
     </ClerkProvider>
