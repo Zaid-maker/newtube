@@ -13,7 +13,7 @@
   },
   "packageManager": "bun@1.2.4",
   "dependencies": {
-    "@clerk/nextjs": "6.12.12",
+    "@clerk/nextjs": "6.25.3",
     "@hookform/resolvers": "^3.10.0",
     "@mux/mux-node": "^10.0.0",
     "@mux/mux-player-react": "^3.3.2",
